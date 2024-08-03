@@ -30,3 +30,9 @@ body{
     background-color: lightcoral;
 }
 
+.book-card {
+    display: flex;
+    border: 5px green solid;
+    background-color: greenyellow;
+}
+
