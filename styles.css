@@ -1,0 +1,32 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+}
+
+.book-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 16rem);
+    grid-auto-rows: 22rem;
+    grid-gap: 3rem;
+    justify-content: center;
+
+    border: solid black 5px;
+    background-color: #3d3d3e;
+}
+
+.book-grid > *{
+    display: flex;
+    border: 1px white solid;   
+    background-color: #f7f7f7;
+    color: white;
+    font-family: Arial;
+    justify-content: center;
+    align-items: center;
+}
+
+.book {
+    display: flex;
+    border: 5px coral solid;
+    background-color: lightcoral;
+}
+
