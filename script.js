@@ -29,10 +29,12 @@ function createCard(book){
     bookNum = bookNum + 1;
 
     // Create the elements to display the book information
+    let deleteButton = document.createElement("button");
     let cardTitle = document.createElement("h3");
-    let cardAuthor =document.createElement("h4");
+    let cardAuthor = document.createElement("h4");
     let cardPages = document.createElement("h5");
     let cardRead = document.createElement("h4");
+    let buttonContainer = document.createElement("div");
 
     cardTitle.innerHTML = book.title;
     cardAuthor.innerHTML = "By " + book.author;
@@ -45,20 +47,55 @@ function createCard(book){
     }
 
 
+    newCard.appendChild(deleteButton);
     newCard.appendChild(cardTitle);
     newCard.appendChild(cardAuthor);
     newCard.appendChild(cardPages);
     newCard.appendChild(cardRead);
+    newCard.appendChild(buttonContainer);
 
     newCard.style.display = "flex";
     newCard.style.flexDirection = "column";
     newCard.style.color = "darkslategray";
     newCard.style.justifyContent = "space-evenly";
 
-    cardTitle.style.flexShrink = "1";
-    cardAuthor.style.flexShrink = "2";
-    cardPages.style.flexShrink = "1";
-    cardRead.style.flexShrink = "2";
+    cardAuthor.style.flexGrow = "1";
+    cardTitle.style.flexGrow = "1";
+    cardPages.style.flexGrow = "1";
+    cardRead.style.flexGrow = "1";
+
+    cardTitle.style.alignContent = "center";
+    cardAuthor.style.alignContent = "center";
+    cardPages.style.alignContent = "center";
+    cardRead.style.alignContent = "center";
+
+    cardTitle.style.marginBottom = "0px";
+    cardAuthor.style.marginTop = "0px";
+    cardAuthor.style.marginBottom = "0px";
+    cardPages.style.marginTop = "0px";
+    cardRead.style.marginBottom = "0px";
+
+    // Style button container
+    let editButton = document.createElement("button");
+    let toggleReadButton = document.createElement("button");
+    buttonContainer.style.display = "flex";
+    buttonContainer.appendChild(editButton);
+    buttonContainer.appendChild(toggleReadButton);
+    
+    buttonContainer.style.width = "100%";
+    buttonContainer.style.flexGrow = "1";
+
+    editButton.style.width = "50%";
+    editButton.innerHTML = "Edit Book";
+
+    toggleReadButton.style.width = "50%";
+    toggleReadButton.innerHTML = "Toggle Read";
+
+    // Style delete button
+    deleteButton.style.flexGrow = "1";
+    deleteButton.style.alignSelf = "flex-end";
+    deleteButton.innerHTML = "Delete Book";
+    
 
     return newCard;
 
