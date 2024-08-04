@@ -63,7 +63,6 @@ function createCard(book){
     cardTitle.style.flexGrow = "1";
     cardPages.style.flexGrow = "1";
     cardRead.style.flexGrow = "1";
-    //test commit
 
     cardTitle.style.alignContent = "center";
     cardAuthor.style.alignContent = "center";
@@ -97,22 +96,46 @@ function createCard(book){
     deleteButton.style.alignSelf = "flex-end";
     deleteButton.innerHTML = "Delete Book";
     
-
     return newCard;
-
 }
+
+// Create Add Button for library
+let addButton = document.createElement("button");
+bookGrid.appendChild(addButton);
+addButton.className = "book-card";
+addButton.style.color = "darkslategray";
+addButton.style.fontSize = "150px";
+addButton.innerHTML = "+";
+addButton.style.transitionDuration = "0.2s";
+addButton.addEventListener("mouseenter", function(event){
+    event.target.style.backgroundColor = "white";
+}, false);
+addButton.addEventListener("mouseleave", function(event){
+    event.target.style.transitionDuration = "0.2s";
+    event.target.style.backgroundColor = "greenyellow";
+}, false);
+addButton.addEventListener("mousedown", function(event){
+    event.target.style.transitionDuration = "0s";
+    event.target.style.backgroundColor = "#e7e7e7";
+}, false);
+addButton.addEventListener("mouseup", function(event){
+    event.target.style.backgroundColor = "white";
+}, false);
+
 
 const book1 = new Book("Book 1", "Author 1", 1, true);
 const book2 = new Book("Book 2", "Author 2", 2, false);
 const book3 = new Book("Book 3", "Author 3", 3, true);
+myLibrary.push(book1);
+myLibrary.push(book2);
+myLibrary.push(book3);
 
 
 function addBookToLibrary(book){
-    myLibrary.push(book);
     let newCard = createCard(book);
     bookGrid.appendChild(newCard);
 }
 
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(book3);
+for (let i = 0; i < myLibrary.length; i++){
+    addBookToLibrary(myLibrary[i]);
+}
