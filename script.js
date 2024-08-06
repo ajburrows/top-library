@@ -3,6 +3,7 @@ const myLibrary = [];
 let bookNum = 0;
 const bookGrid = document.querySelector("div.book-grid");
 
+// Create a book object
 function Book(title, author, pages, read){
     this.title = title;
     this.author = author;
@@ -21,6 +22,7 @@ function Book(title, author, pages, read){
     };
 }
 
+// Create a card object
 function createCard(book){
     // Create the card div
     let newCard = document.createElement("div");
@@ -99,30 +101,77 @@ function createCard(book){
     return newCard;
 }
 
-// Create Add Button for library
-let addButton = document.createElement("button");
-bookGrid.appendChild(addButton);
-addButton.className = "book-card";
-addButton.style.color = "darkslategray";
-addButton.style.fontSize = "150px";
-addButton.innerHTML = "+";
-addButton.style.transitionDuration = "0.2s";
-addButton.addEventListener("mouseenter", function(event){
-    event.target.style.backgroundColor = "white";
-}, false);
-addButton.addEventListener("mouseleave", function(event){
-    event.target.style.transitionDuration = "0.2s";
-    event.target.style.backgroundColor = "greenyellow";
-}, false);
-addButton.addEventListener("mousedown", function(event){
-    event.target.style.transitionDuration = "0s";
-    event.target.style.backgroundColor = "#e7e7e7";
-}, false);
-addButton.addEventListener("mouseup", function(event){
-    event.target.style.backgroundColor = "white";
-}, false);
+// Add the "Add Button" to the site
+function createAddButton(){
+    // Create Add Button for library
+    let addButton = document.createElement("button");
+    bookGrid.appendChild(addButton);
+    addButton.className = "book-card";
+    addButton.style.color = "darkslategray";
+    addButton.style.fontSize = "150px";
+    addButton.innerHTML = "+";
+    addButton.style.transitionDuration = "0.2s";
+    addButton.addEventListener("mouseenter", function(event){
+        event.target.style.backgroundColor = "white";
+    }, false);
+    addButton.addEventListener("mouseleave", function(event){
+        event.target.style.transitionDuration = "0.2s";
+        event.target.style.backgroundColor = "greenyellow";
+    }, false);
+    addButton.addEventListener("mousedown", function(event){
+        event.target.style.transitionDuration = "0s";
+        event.target.style.backgroundColor = "#e7e7e7";
+    }, false);
+    addButton.addEventListener("mouseup", function(event){
+        event.target.style.backgroundColor = "white";
+    }, false);
 
+}
 
+// Add the book passed in to the site
+function addBookToLibrary(book){
+    let newCard = createCard(book);
+    bookGrid.appendChild(newCard);
+}
+
+function openModal(modal){
+    if (modal == null) return;
+    modal.classList.add('active');
+    overlay.classList.add('active');
+}
+
+function closeModal(modal){
+    if (modal == null) return;
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+}
+
+const openModalButtons = document.querySelectorAll('[data-modal-target]');
+const closeModalButtons = document.querySelectorAll('[data-close-button]');
+const overlay = document.getElementById('overlay');
+
+openModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const modal = document.querySelector(button.dataset.modalTarget);
+        openModal(modal);
+    });
+});
+
+closeModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const modal = button.closest('.modal');
+        closeModal(modal);
+    });
+});
+
+overlay.addEventListener('click', ()=>{
+    const modals = document.querySelectorAll('.modal.active');
+    modals.forEach(modal => {
+        closeModal(modal);
+    })
+})
+
+// Initialize 3 books for testing
 const book1 = new Book("Book 1", "Author 1", 1, true);
 const book2 = new Book("Book 2", "Author 2", 2, false);
 const book3 = new Book("Book 3", "Author 3", 3, true);
@@ -130,12 +179,9 @@ myLibrary.push(book1);
 myLibrary.push(book2);
 myLibrary.push(book3);
 
+createAddButton();
 
-function addBookToLibrary(book){
-    let newCard = createCard(book);
-    bookGrid.appendChild(newCard);
-}
-
+// Add the three books to the site
 for (let i = 0; i < myLibrary.length; i++){
     addBookToLibrary(myLibrary[i]);
 }
