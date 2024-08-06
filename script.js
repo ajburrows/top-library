@@ -137,10 +137,10 @@ function addBookToLibrary(book){
 }
 
 function submitModal(){
-    const title = document.getElementById("input-title").nodeValue;
-    const author = document.getElementById("input-author").nodeValue;
-    const pages = document.getElementById("input-pages").nodeValue;
-    const read = document.getElementsByName("input-read").nodeValue;
+    const title = document.getElementById("input-title").value;
+    const author = document.getElementById("input-author").value;
+    const pages = document.getElementById("input-pages").value;
+    const read = document.getElementsByName("input-read").value;
     var newBook = new Book(title, author, pages, read);
     addBookToLibrary(newBook);
     console.log("book submitted");
@@ -170,15 +170,3 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-
-
-
-
-// Initialize 3 books for testing
-// const book1 = new Book("Book 1", "Author 1", 1, true);
-// const book2 = new Book("Book 2", "Author 2", 2, false);
-// const book3 = new Book("Book 3", "Author 3", 3, true);
-// addBookToLibrary(book1);
-// addBookToLibrary(book2);
-// addBookToLibrary(book3);
-
