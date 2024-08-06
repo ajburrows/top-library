@@ -132,27 +132,26 @@ function createAddButton(){
 // Add the book passed in to the site
 function addBookToLibrary(book){
     let newCard = createCard(book);
+    myLibrary.push(book);
     bookGrid.appendChild(newCard);
 }
 
-
-// Initialize 3 books for testing
-const book1 = new Book("Book 1", "Author 1", 1, true);
-const book2 = new Book("Book 2", "Author 2", 2, false);
-const book3 = new Book("Book 3", "Author 3", 3, true);
-myLibrary.push(book1);
-myLibrary.push(book2);
-myLibrary.push(book3);
+function submitModal(){
+    const title = document.getElementById("input-title").nodeValue;
+    const author = document.getElementById("input-author").nodeValue;
+    const pages = document.getElementById("input-pages").nodeValue;
+    const read = document.getElementsByName("input-read").nodeValue;
+    var newBook = new Book(title, author, pages, read);
+    addBookToLibrary(newBook);
+    console.log("book submitted");
+}
 
 createAddButton();
 
-// Get the modal
+
+// Set up Modal -------------------------------------------
 var modal = document.getElementById("addBookModal");
-
-// Get the button that opens the modal
 var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
@@ -172,7 +171,14 @@ window.onclick = function(event) {
   }
 }
 
-// Add the three books to the site
-for (let i = 0; i < myLibrary.length; i++){
-    addBookToLibrary(myLibrary[i]);
-}
+
+
+
+// Initialize 3 books for testing
+// const book1 = new Book("Book 1", "Author 1", 1, true);
+// const book2 = new Book("Book 2", "Author 2", 2, false);
+// const book3 = new Book("Book 3", "Author 3", 3, true);
+// addBookToLibrary(book1);
+// addBookToLibrary(book2);
+// addBookToLibrary(book3);
+
