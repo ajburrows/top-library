@@ -10,12 +10,33 @@
 <body>
     <div class="book-grid"></div>
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
+    <div id="addBookModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <p>Some text in the Modal..</p>
+            <form>
+                <label for="input-title">Book Title:</label><br>
+                <input type="text" id="input-title" placeholder="Principles"><br><br>
+
+                <label for="input-author">Author Name:</label><br>
+                <input type="text" id="input-author" placeholder="Ray Dalio"><br><br>
+
+                <label for="input-pages">Number of Pages:</label><br>
+                <input type="text" id="input-pages" placeholder="592"><br>
+                
+                <br>
+
+                <p style="margin-bottom: 0px;">Have you finished reading this book?</p>
+                <input type="radio" id="input-read-yes" name="input-read" value="true">
+                <label for="input-read-yes">Yes</label><br>
+                <input type="radio" id="input-read-no" name="input-read" value="false">
+                <label for="input-read-no">No</label><br>
+
+                <br>
+
+                <input type="submit">
+
+            </form>
         </div>
     </div>
 </body>

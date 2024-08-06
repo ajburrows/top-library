@@ -147,7 +147,7 @@ myLibrary.push(book3);
 createAddButton();
 
 // Get the modal
-var modal = document.getElementById("myModal");
+var modal = document.getElementById("addBookModal");
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
