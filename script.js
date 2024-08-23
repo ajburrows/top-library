@@ -4,13 +4,16 @@ let bookNum = 0;
 const bookGrid = document.querySelector("div.book-grid");
 
 // Create a book object
-function Book(title, author, pages, read){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+class Book{
+    //(title, author, pages, read){
+    constructor(title, author, pages, read){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 
-    this.info = function(){
+    info(){
         let output = this.title + ", by " + this.author + ", " + this.pages + " pages, ";
         if (this.read == true){
             output = output + "finished reading";
@@ -19,7 +22,7 @@ function Book(title, author, pages, read){
             output = output + "not read yet";
         }
         return output;
-    };
+    }
 }
 
 // Create a card object
